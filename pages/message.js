@@ -1,4 +1,5 @@
 import Nav from '../components/nav';
+import Form from '../components/form';
 
 export default function Message() {
     return (
@@ -6,6 +7,7 @@ export default function Message() {
             <Nav />
             <h1>Create your message</h1>
             <div >
+                <Form />
             </div>
         </>
     )
