@@ -5,7 +5,7 @@ const Nav = () => {
         <header>
             <ul>
                 <li><Link href="/"><a><img src="./logo.png" /></a></Link></li>
-                <li><Link href="/galleries/gallery"><a>Gallery</a></Link></li>
+                <li><Link href="/gallery"><a>Gallery</a></Link></li>
                 <li><Link href="/message"><a>Create your message</a></Link></li>
             </ul>
         </header>
