@@ -1,3 +1,6 @@
+//import { HexColorPicker} from "react-color";
+import styles from "../styles/Home.module.css";
+
 const Form = ({ onSubmit }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,6 +16,18 @@ const Form = ({ onSubmit }) => {
         <section>
             <h3>Form Titel nog kiezen</h3>
             <form onSubmit={(e) => handleSubmit(e)} >
+                <div>
+                    <div>Color1</div>
+                    <div>Color2</div>
+                    <div>Color3</div>
+                    <div>Color4</div>
+                    <div>Color5</div>
+                </div>
+                <div>
+                    <label>Size</label>
+                    <input type="range" min="1" max="4"  />
+
+                </div>
                 <div>
                     <label>
                         From:

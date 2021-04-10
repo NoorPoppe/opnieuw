@@ -4,7 +4,7 @@ const Nav = () => {
     return(
         <header>
             <ul>
-                <li><Link href="/"><a>Home</a></Link></li>
+                <li><Link href="/"><a><img src="./logo.png" /></a></Link></li>
                 <li><Link href="/galleries/gallery"><a>Gallery</a></Link></li>
                 <li><Link href="/message"><a>Create your message</a></Link></li>
             </ul>

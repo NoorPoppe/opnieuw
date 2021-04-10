@@ -1,11 +1,12 @@
-import Nav from '../../components/nav';
-export default function Gallery() {
-    return (
+
+const Gallery = () => {
+    return ( 
         <>
-           <Nav />
             <h1>The gallery</h1>
             <div >
             </div>
         </>
-    )
+     );
 }
+ 
+export default Gallery;
