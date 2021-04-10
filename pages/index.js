@@ -8,7 +8,8 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Let the cat out of the bag</title>
+        <title>cat out of the bag - home</title>
+        <meta name="keywords" content="cats"></meta>
         <link rel="icon" href="/logo.png" />
       </Head>
       <main className={styles.main}>
