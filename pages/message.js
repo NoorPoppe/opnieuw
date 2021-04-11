@@ -5,8 +5,9 @@ const Message = () => {
     return ( 
         <>
             <Head>
-                <title>cat out of the bag - Studio</title>
+                <title>Cat out of the bag - Studio</title>
                 <meta name="keywords" content="cats"></meta>
+                <link rel="icon" href="/logo.png" />
             </Head>
             <h1>Create your message</h1>
             <div >
