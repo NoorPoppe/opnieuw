@@ -28,5 +28,5 @@ Voting best lie
 
 
 Front-end: Next.js
-Headless CMS: Ghost
+Headless CMS: Contentful
 Hosting: Heroku 

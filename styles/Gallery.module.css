@@ -1,0 +1,45 @@
+.title {
+    background: #FDF28A;
+    border: 6px solid #000000;
+    padding: 1rem;
+    width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    background: #F4B8CD;
+    border: 5px solid #000000;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin: 1rem auto;
+    cursor: pointer;
+}
+
+.from {
+    font-size: 30px;
+}
+
+.lie {
+   font-size: 20px;  
+}
+
+.image {
+    width: 330px;
+    height: 330px;
+    background-color: white;
+}
+
+/*
+.from::before {
+    color: teal;
+    border-radius: 100px;
+    width: 3rem;
+    height: 3rem;
+}
+*/

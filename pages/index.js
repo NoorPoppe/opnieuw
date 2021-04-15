@@ -1,21 +1,17 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-
-
+import Image from 'next/image'
 
 export default function Home() {
+  /*        <Image className={styles.image} src="/cat-home.svg" width={599} height={652} alt="cat" /> */
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Cat out of the bag - home</title>
-        <meta name="keywords" content="cats"></meta>
-        <link rel="icon" href="/logo.png" />
-      </Head>
-      <main className={styles.main}>
+    <div>
+      <main className={styles.container}>
         <h1 className={styles.title}>Let the cat out of the bag</h1>
-        <p>Now it is your change to confess a little lie!</p>
-        <Link href="/message" ><a>Make your cat in the bag</a></Link>
+        <p className={styles.subtext}>Now it is your change to confess a little lie!</p>
+        <img className={styles.image} src="./cat-home.svg" width={599} height={652} alt="cat"  />
+        <Link href="/message" ><a className={styles.button}  >Create your cat</a></Link>
       </main>
     </div>
   )

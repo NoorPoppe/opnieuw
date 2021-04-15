@@ -1,30 +1,30 @@
 import Link from 'next/link'
-export const getStaticProps = async() => {
-    const resp = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    const data = await resp.json();
+import Head from 'next/head'
+import { createClient } from 'contentful';
+import GalleryItem from '../../components/GalleryItem';
+import styles from '../../styles/Gallery.module.css'
+export async function getStaticProps() {
+
+    const client = createClient({
+        space: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+    })
+    const res = await client.getEntries({ content_type: 'cat' });
     return {
         props: {
-            data,
-        },
-    };
+            cats: res.items
+        }
+    }
 
 }
-import Head from 'next/head'
-const Gallery = ({data}) => {
+
+const Gallery = ({cats}) => {
     return ( 
         <>
-            <Head>
-                <title>Cat out of the bag - Gallery</title>
-                <meta name="keywords" content="cats"></meta>
-                <link rel="icon" href="/logo.png" />
-            </Head>
-            <h1>The gallery</h1>
-            <div >
-                {data.map((user) => (
-                    <Link href={'/galleries/' + user.id} key={user.id} >
-                        <a><h3>{user.name}</h3>
-                            <p>{user.email}</p></a> 
-                    </Link>
+            <h1 className={styles.title}>The gallery</h1>
+            <div className={styles.cat}>
+                {cats.map(cat => (
+                    <GalleryItem key={cat.sys.id} cat={cat} />
                 ))}
             </div>
         </>
@@ -32,3 +32,4 @@ const Gallery = ({data}) => {
 }
  
 export default Gallery;
+

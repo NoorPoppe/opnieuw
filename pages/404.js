@@ -11,7 +11,7 @@ const NotFound = () => {
         }, 3000)
     },[])
     return ( <div>
-        <h1>oooops</h1>
+        <h1>oops</h1>
         <h2>That page can not be found</h2>
         <p>Go back to the <Link href="/"><a>Home</a></Link></p>
     </div> );
