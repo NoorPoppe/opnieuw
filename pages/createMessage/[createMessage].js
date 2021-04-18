@@ -18,7 +18,7 @@ export default function CreateMessages() {
 export async function getStaticPaths() {
     const res = await fetchEntries()
     const cornucopia = await res.map((p) => {
-        return `/createMessage/${p.fields.slug}`
+        return `/createMessages/${p.fields.slug}`
     })
 
     return { paths: cornucopia, fallback: false }
