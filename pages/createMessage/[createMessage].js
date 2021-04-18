@@ -3,7 +3,7 @@ import { fetchEntries } from '@utils/contentfulPosts'
 import CreateMessage from '../../components/CreateMessage'
 
 
-export default function CreateMessage() {
+export default function CreateMessages() {
     const router = useRouter()
 
     return (
