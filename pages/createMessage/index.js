@@ -56,7 +56,7 @@ export async function getStaticProps() {
 
 export const getStaticPaths = async () => {
     const r = await fetchEntries(
-        `${process.env.CONTENTFUL_SPACE_ID}/createMessages?_limit=3&_sort=id:desc`
+        `${process.env.CONTENTFUL_SPACE_ID}/?_limit=3&_sort=id:desc`
     );
     const data = await r ;
 
