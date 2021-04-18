@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import Head from 'next/head'
 import { createClient } from 'contentful';
 import GalleryItem from '../../components/GalleryItem';
 import styles from '../../styles/Gallery.module.css'
+
+
 export async function getStaticProps() {
 
     const client = createClient({
@@ -13,7 +14,8 @@ export async function getStaticProps() {
     return {
         props: {
             cats: res.items
-        }
+        }, 
+        revalidate: 1
     }
 
 }
