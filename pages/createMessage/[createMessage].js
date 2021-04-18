@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { fetchEntries } from '@utils/contentfulPosts'
+import { fetchEntries } from '../../utils/contentfulPosts'
 import CreateMessage from '../../components/CreateMessage'
 
 
