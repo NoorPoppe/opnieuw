@@ -7,6 +7,7 @@ const Comments = ({ comments = [] }) => {
                     <li key={comment.id}>
                         <strong>{comment.name}</strong>
                         <p>{comment.comment}</p>
+                        <p>{comment.rating}</p>
                     </li>
                 ))}
             </ul>

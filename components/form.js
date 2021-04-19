@@ -22,7 +22,9 @@ const Form = ({ onSubmit, messages }) => {
     return (
         <section>
             <h3>Message</h3>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form 
+            onSubmit={(e) => handleSubmit(e)}
+            method="POST">
                 <label>
                     From:
                     <input

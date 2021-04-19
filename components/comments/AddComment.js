@@ -4,6 +4,7 @@ const AddComment = ({ onSubmit }) => {
         const data = {
             name: e.target.name.value,
             comment: e.target.comment.value,
+            rating: e.target.rating.value,
         };
         e.target.reset();
         onSubmit(data);

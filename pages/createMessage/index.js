@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { fetchEntries } from '../../utils/contentfulPosts'
+//import { fetchEntries } from '../../utils/contentfulPosts'
 //import Message from '../../components/Message'
 import { useState } from "react";
 //import ReactMarkdown from "react-markdown";
 import Form from '../../components/form';
+import Color from '../../components/color';
 
 export default function createMessage({ data }) {
     const router = useRouter();
@@ -32,7 +33,7 @@ export default function createMessage({ data }) {
         <>
             <div className="container">
                 <Form onSubmit={handleSubmit} />
-
+                <Color />
             </div>
         </>
     )
@@ -40,6 +41,7 @@ export default function createMessage({ data }) {
 
 
 //toy inladen 
+/*
 export async function getStaticProps() {
     const res = await fetchEntries()
     const data = await res.map((t) => {
@@ -54,19 +56,12 @@ export async function getStaticProps() {
     };
 }
 
-export const getStaticPaths = async () => {
-    const r = await fetchEntries(
-        `${process.env.CONTENTFUL_SPACE_ID}/?_limit=3&_sort=id:desc`
-    );
-    const data = await r ;
+export async function getStaticPaths() {
+    const res = await fetchEntries()
+    const cornucopia = await res.map((p) => {
+        return `/createMessage/${p.fields.slug}`
+    })
 
-    return {
-        paths: data.map((createMessage) => ({
-            params: {
-                slug: createMessage.slug,
-            },
-        })),
-        fallback: true,
-    };
-};
-
+    return { paths: cornucopia, fallback: false }
+}
+*/

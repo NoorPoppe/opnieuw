@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { fetchEntries } from '../../utils/contentfulPosts'
-import CreateMessage from '../../components/CreateMessage'
+import { fetchEntries } from '../utils/contentfulPosts'
+import Message from './Message'
 
 
 export default function CreateMessages() {
@@ -9,7 +9,7 @@ export default function CreateMessages() {
     return (
         <>
             <div>
-                <CreateMessage to={router.query.to} from={router.query.from} />
+                <Message to={router.query.to} from={router.query.from} />
             </div>
         </>
     )
@@ -18,7 +18,7 @@ export default function CreateMessages() {
 export async function getStaticPaths() {
     const res = await fetchEntries()
     const cornucopia = await res.map((p) => {
-        return `/${p.fields.slug}`
+        return `/createMessage/${p.fields.slug}`
     })
 
     return { paths: cornucopia, fallback: false }

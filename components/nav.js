@@ -5,11 +5,11 @@ import Image from 'next/image'
 const Nav = () => {
     return (
         <header>
-            <ul className={styles.nav}>
+            <ul >
                 <li><Link href="/"><a><Image src="/logo.png" width={164} height={141} alt="logo" /></a></Link></li>
-                <div className={styles.nav__wrapper}>
-                    <li><Link href="/gallery/"><a className={styles.button} >Gallery</a></Link></li>
-                    <li><Link href="/createMessage/"><a className={styles.button} >Create your message</a></Link></li>
+                <div >
+                    <li><Link href="/gallery/"><a  >Gallery</a></Link></li>
+                    <li><Link href="/createMessage/"><a  >Create your message</a></Link></li>
                 </div>
 
 

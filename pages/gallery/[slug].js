@@ -4,6 +4,7 @@ import Comments from "../../components/comments/Comments";
 import AddComment from "../../components/comments/AddComment";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 //import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 //import Image from 'next/image'
 
@@ -12,7 +13,7 @@ const client = createClient({
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 })
 
-export default function GalleryDetails({ cat /*, data */}) {
+export default function GalleryDetails({ cat }) {
     const router = useRouter();
     const { to, from, lie, toy, image } = cat.fields
     const [comments, setComments] = useState(cat.comments);
@@ -23,9 +24,9 @@ export default function GalleryDetails({ cat /*, data */}) {
             `${process.env.CONTENTFUL_SPACE_ID}/comments/`,
             {
                 method: "POST",
-                body: comment,
+                body: JSON.stringify(comment),
                 headers: {
-                    "Content-Type": "cat",
+                    "Content-Type": "application/json",
                 },
             }
         );
@@ -41,6 +42,7 @@ export default function GalleryDetails({ cat /*, data */}) {
                 <p className={styles.from}>{from}</p>
                 <p className={styles.image}>image cat</p>
                 <p className={styles.lie} >{lie}</p>
+
             <Comments comments={comments} />
             <AddComment onSubmit={handleSubmit} />
         </div>
