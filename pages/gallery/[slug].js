@@ -11,7 +11,7 @@ import ReactMarkdown from "react-markdown";
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+    //accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 })
 
 export default function GalleryDetails({ cat }) {
