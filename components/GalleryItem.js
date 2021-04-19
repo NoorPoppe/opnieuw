@@ -8,7 +8,7 @@ export default function GalleryItem({ cat }) {
     const { from, to, lie, slug } = cat.fields
     return (
         <div className={styles.item}>
-            <Link href={'/gallery/' + slug}>
+            <Link href={'/gallery/'+ slug}>
                 <div>
                     <p className={styles.from}>{from}</p>
                     <p className={styles.image}>image cat</p>

@@ -11,8 +11,6 @@ const Nav = () => {
                     <li><Link href="/gallery/"><a  >Gallery</a></Link></li>
                     <li><Link href="/createMessage/"><a  >Create your message</a></Link></li>
                 </div>
-
-
             </ul>
         </header>
     )

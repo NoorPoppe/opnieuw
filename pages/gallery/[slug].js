@@ -1,3 +1,4 @@
+
 import { createClient } from 'contentful'
 import styles from '../../styles/Gallery.module.css'
 import Comments from "../../components/comments/Comments";
@@ -14,7 +15,7 @@ const client = createClient({
 })
 
 export default function GalleryDetails({ cat }) {
-    const router = useRouter();
+    /*const router = useRouter();
     const { to, from, lie, toy, image } = cat.fields
     const [comments, setComments] = useState(cat.comments);
     
@@ -35,9 +36,10 @@ export default function GalleryDetails({ cat }) {
             const tmp = [...comments, result];
             setComments(tmp);
         }
-    };
+    };*/
 
-    return (
+    return ( <p>test</p>
+        /*
         <div className={`${styles.item}${styles.item__width}`}>
                 <p className={styles.from}>{from}</p>
                 <p className={styles.image}>image cat</p>
@@ -45,9 +47,10 @@ export default function GalleryDetails({ cat }) {
 
             <Comments comments={comments} />
             <AddComment onSubmit={handleSubmit} />
-        </div>
+        </div>*/
     )
 }
+/*
 export const getStaticPaths = async () => {
     const res = await client.getEntries({
         content_type: "cat"
@@ -85,3 +88,4 @@ export const getStaticProps = async ({ params }) => {
         revalidate: 1
     }
 }
+*/
