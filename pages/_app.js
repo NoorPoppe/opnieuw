@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import '../styles/globals.css'
 import { ClayModalProvider } from '@clayui/modal';
 import "@clayui/css/lib/css/atlas.css";
