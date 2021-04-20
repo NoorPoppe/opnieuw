@@ -23,23 +23,34 @@
 
 .from {
     font-size: 30px;
+    font-weight: 500;
 }
 
 .lie {
    font-size: 20px;  
+   font-weight: 500;
 }
 
 .image {
-    width: 330px;
-    height: 330px;
-    background-color: white;
+    width: 350px;
+    height: 350px;
+    background-color: #FDF28A;
 }
 
-/*
-.from::before {
-    color: teal;
-    border-radius: 100px;
-    width: 3rem;
-    height: 3rem;
+.circle {
+  height: 35px;
+  width: 35px;
+  background-color: #102D71;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 1rem;
 }
-*/
+
+.head {
+    display: flex;
+}
+
+.heart {
+    background-color: red;
+    border: none;
+}

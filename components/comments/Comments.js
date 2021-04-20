@@ -1,4 +1,5 @@
-const Comments = ({ comments = [] }) => {
+const Comments = ({ comments =[]}) => {
+    //const { name, comment, rating } = comments.fields
     return (
         <section>
             <h3>Comments</h3>

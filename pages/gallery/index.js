@@ -1,37 +1,37 @@
-import Link from 'next/link'
-import { createClient } from 'contentful';
-import GalleryItem from '../../components/GalleryItem';
+import { createClient } from 'contentful'
+import CatCard from '../../components/CatsCard'
 import styles from '../../styles/Gallery.module.css'
 
-
 export async function getStaticProps() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  })
 
-    const client = createClient({
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-    })
-    const res = await client.getEntries({ content_type: 'cat' });
-    return {
-        props: {
-            cats: res.items
-        }, 
-        revalidate: 1
-    }
+  const res = await client.getEntries({ content_type: "cat" })
+  //const resc = await client.getEntries({ content_type: "comment" })
 
+  return {
+    props: {
+      cats: res.items,
+      //comment: resc.items,
+    },
+    revalidate: 1
+  }
 }
 
 const Gallery = ({cats}) => {
-    return ( 
+    console.log(cats)
+    return (
         <>
-            <h1 className={styles.title}>The gallery</h1>
+            <h1 className={styles.title}>gallery of lies</h1>
             <div className={styles.cat}>
                 {cats.map(cat => (
-                    <GalleryItem key={cat.sys.id} cat={cat} />
+                    <CatCard key={cat.sys.id} cat={cat} />
                 ))}
             </div>
         </>
-     );
+    );
 }
- 
-export default Gallery;
 
+export default Gallery;
