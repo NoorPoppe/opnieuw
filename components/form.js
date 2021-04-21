@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { Listbox, ListboxOption } from '@reach/listbox'
+//import { Listbox, ListboxOption } from '@reach/listbox'
 //import '@reach/listbox/styles.css'
 import styles from '../styles/Form.module.css'
 import React from 'react';
@@ -8,6 +8,7 @@ import Cat, { PARTS } from '../components/cat';
 import '@clayui/css/lib/css/atlas.css';
 import { ClaySelect } from '@clayui/form';
 import ClayColorPicker from '@clayui/color-picker';
+import { nanoid } from 'nanoid'
 //import ClayLoadingIndicator from '@clayui/loading-indicator';
 
 function ColorCustomizer({ onChangeColor, color }) {
@@ -173,7 +174,7 @@ export default function Form({ cats, onSubmit }) {
                         </div>
                     </div>
                     <div >
-                        <Link href={`/createMessage/?to=${to}&from=${from}`}>
+                        <Link href={`/createMessage/${nanoid()}`}>
                             <a> <input className={styles.button} type="submit" value="Send" /></a>
                         </Link>
                     </div>

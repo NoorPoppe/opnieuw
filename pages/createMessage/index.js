@@ -8,7 +8,6 @@ function createMessage() {
         <>
             <div>
                 <Form />
-
             </div>
         </>
     );
