@@ -145,29 +145,29 @@ export default function Form({ cats, onSubmit }) {
 
                             <label className={styles.subtitle}>The lie</label>
                             <div className={styles.lie_wrapper__padding}>
-                                    <label className={styles.subsubtitle}>From:
-                                    <input  className={styles.texbox}
-                                            type="text"
-                                            name="from"
-                                            value={from}
-                                            onChange={(e) => {
-                                                setFrom(e.target.value)
-                                            }}
-                                        />
-                                    </label>
-                                    <label className={styles.subsubtitle} >To:
+                                <label className={styles.subsubtitle}>From:
                                     <input className={styles.texbox}
-                                            type="text"
-                                            name="to"
-                                            value={to}
-                                            onChange={(e) => {
-                                                setTo(e.target.value)
-                                            }}
-                                        />
-                                    </label>
-                                <label className={styles.subsubtitle} > The lie: 
+                                        type="text"
+                                        name="from"
+                                        value={from}
+                                        onChange={(e) => {
+                                            setFrom(e.target.value)
+                                        }}
+                                    />
+                                </label>
+                                <label className={styles.subsubtitle} >To:
+                                    <input className={styles.texbox}
+                                        type="text"
+                                        name="to"
+                                        value={to}
+                                        onChange={(e) => {
+                                            setTo(e.target.value)
+                                        }}
+                                    />
+                                </label>
+                                <label className={styles.subsubtitle} > The lie:
                                     <textarea className={styles.texbox}
-                                        name="lie" 
+                                        name="lie"
                                         maxLength="500"></textarea>
                                 </label>
                             </div>
