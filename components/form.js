@@ -4,7 +4,7 @@ import Link from 'next/link'
 //import '@reach/listbox/styles.css'
 import styles from '../styles/Form.module.css'
 import React from 'react';
-import Cat, { PARTS } from '../components/cat';
+import Cat, { PARTS } from './cat';
 import '@clayui/css/lib/css/atlas.css';
 import { ClaySelect } from '@clayui/form';
 import ClayColorPicker from '@clayui/color-picker';
