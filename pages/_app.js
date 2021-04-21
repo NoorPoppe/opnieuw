@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import { ClayModalProvider } from '@clayui/modal';
 
 function MyApp({ Component, pageProps }) {
