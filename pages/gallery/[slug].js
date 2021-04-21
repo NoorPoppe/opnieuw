@@ -59,7 +59,7 @@ const GalleryDetail = ({ cat }) => {
     const handleSubmit = async (comment) => {
         comment.gallery = cat.id;
         const response = await fetch(
-            `${space}/comments/`,
+            `${process.env.CONTENTFUL_SPACE_ID}/comments/`,
             {
                 method: "POST",
                 body: JSON.stringify(comment),
@@ -67,40 +67,40 @@ const GalleryDetail = ({ cat }) => {
                     "Content-Type": "application/json",
                 },
             }
-        );
-        if (response.ok) {
-            const result = await response.json();
-            const tmp = [...comments, result];
-            setComments(tmp);
-        }
+            );    
+            if (response.ok) {
+                const result = await response.json();
+                const tmp = [...comments, result];
+                setComments(tmp);
+            }
     }
 
 
     return (
-        <>
-            <div className="banner">
-                <Image
-                    src={'https:' + types[0].fields.image.fields.file.url}
-                    width={types[0].fields.image.fields.file.details.image.width}
-                    height={types[0].fields.image.fields.file.details.image.height}
-                />
-            </div>
+            <>
+                <div className="banner">
+                    <Image
+                        src={'https:' + types[0].fields.image.fields.file.url}
+                        width={types[0].fields.image.fields.file.details.image.width}
+                        height={types[0].fields.image.fields.file.details.image.height}
+                    />
+                </div>
 
-            <div >
-                <p>{lie}</p>
-                <p>{to}</p>
-                <p>{from}</p>
-                <Image
-                    src={'https:' + toys[0].fields.image[0].fields.file.url}
-                    height={toys[0].fields.image[0].fields.file.details.image.height}
-                    width={toys[0].fields.image[0].fields.file.details.image.width}
-                />
-                <Comments comments={comments} />
-                <AddComment onSubmit={handleSubmit} />
-            </div>
+                <div >
+                    <p>{lie}</p>
+                    <p>{to}</p>
+                    <p>{from}</p>
+                    <Image
+                        src={'https:' + toys[0].fields.image[0].fields.file.url}
+                        height={toys[0].fields.image[0].fields.file.details.image.height}
+                        width={toys[0].fields.image[0].fields.file.details.image.width}
+                    />
+                    <Comments comments={comments} />
+                    <AddComment onSubmit={handleSubmit} />
+                </div>
 
-        </>
-    );
-}
+            </>
+        );
+    }
 
-export default GalleryDetail;
+    export default GalleryDetail;

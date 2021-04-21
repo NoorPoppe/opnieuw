@@ -3,18 +3,19 @@ import CatCard from '../../components/CatsCard'
 import styles from '../../styles/Gallery.module.css'
 
 export async function getStaticProps() {
+
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   })
 
   const res = await client.getEntries({ content_type: "cat" })
-  //const resc = await client.getEntries({ content_type: "comment" })
+  const resc = await client.getEntries({ content_type: "comment" })
 
   return {
     props: {
       cats: res.items,
-      //comment: resc.items,
+      comment: resc.items,
     },
     revalidate: 1
   }
