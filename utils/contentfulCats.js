@@ -1,11 +1,9 @@
-import { createClient } from 'contentful-management';
-const space = process.env.CONTENTFUL_SPACE_ID
+/*const space = process.env.CONTENTFUL_SPACE_ID
 const accessToken = process.env.CONTENTFUL_ACCES_KEY
 
 const client = require('contentful-management').createClient({
   space: space,
   accessToken: accessToken,
-  //environment: 'master-2021-04-20'
 })
 
 export async function fetchEntries() {
@@ -15,3 +13,5 @@ export async function fetchEntries() {
 }
 
 export default { fetchEntries }
+
+*/

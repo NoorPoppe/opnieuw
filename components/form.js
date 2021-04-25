@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image';
+//import ReactDOM from 'react-dom';
 import { createClient } from "contentful-management";
 import React from 'react';
 
@@ -10,29 +11,21 @@ import { ClaySelect } from '@clayui/form';
 import ClayColorPicker from '@clayui/color-picker';
 import { nanoid } from 'nanoid';
 import { uuid, v4 } from "uuidv4";
+import { Listbox, ListboxOption } from '@reach/listbox'
 //css
 import styles from '../styles/Form.module.css'
+import Types from './Types';
 
-function ColorCustomizer({ onChangeColor, color }) {
-    return (
-        <div>
-            <ClayColorPicker
-                onValueChange={onChangeColor}
-                value={color}
-            />
-        </div>
-    );
-}
-
-
-export default function Form({ cats, onSubmit }) {
-    //const { to, from, lie, types, toys } = cats.fields
+export default function Form({ cats }) {
+    //const { toys, types } = cats.fields
     const [newData, setNewData] = useState({
         to: "",
         from: "",
         lie: "",
+       /* toys: [],
+        types: [],*/
     });
-    // const data = getValue().list;
+
     const updateDataValue = async (e) => {
         e.preventDefault();
         console.log(process.env.CONTENTFUL_ACCES_KEY)
@@ -45,7 +38,7 @@ export default function Form({ cats, onSubmit }) {
             .getSpace("7h21otlgi1p3")
             .then((space) => space.getEnvironment("master"))
             .then((environment) =>
-                environment.createEntryWithId("cat", v4(), {
+                environment.createEntryWithId("cat", uuid(), {
                     fields: {
                         to: {
                             "en-US": newData.to,
@@ -66,16 +59,15 @@ export default function Form({ cats, onSubmit }) {
                 //niet gelukt
             });
     };
-    //const { types } = cats.fields
-    //let [to, setTo] = useState('')
-    //let [lie, setLie] = useState('')
-    //let [from, setFrom] = useState('')
     const defaultPalettesRef = React.useRef({});
     const defaultPaletteNamesRef = React.useRef([]);
     const [activePalette, setActivePalette] = React.useState(false);
     const [activePart, setActivePart] = React.useState(PARTS[0].part);
     const [palette, setPalette] = React.useState({});
     const [loading, setLoading] = React.useState(true);
+
+    /*let [selectedSlug, setSelectedSlug] = useState([])*/
+    const [data, setData] = useState('upgrade');
 
     React.useEffect(() => {
         fetch(`/data/presets.json`)
@@ -100,8 +92,13 @@ export default function Form({ cats, onSubmit }) {
                     <label className={styles.title}>The studio</label>
                     <div className={styles.margin}>
                         <div className={styles.question__wrapper} >
-                            <label className={styles.subsubtitle}>Choose your cat</label>
-                            <div className={styles.row}>
+                            <label className={styles.subsubtitle} >Choose your cat</label>
+                            {/*<Listbox value={data} onChange={setData}>
+                                {cats.map((cat) => {
+                                    return <ListboxOption></ListboxOption>
+                                })
+                            </Listbox>*/}
+                            {<div className={styles.row}>
                                 <label className={styles.types} htmlFor="normal">Normal cat
                                 <input className={styles.invisable} type="radio" name="types" id="normal" value="normal" />
                                 </label>
@@ -111,20 +108,19 @@ export default function Form({ cats, onSubmit }) {
                                 <label className={styles.types} htmlFor="embarresed">Embarresed cat
                                 <input className={styles.invisable} type="radio" name="types" id="embarresed" value="embarresed" />
                                 </label>
-                            </div>
+                            </div>}
                         </div>
                         <div className={styles.question__wrapper}>
                             <label className={styles.subsubtitle}>Choose your toy</label>
-                            <div>
-                                {/*cats.map(cat => (
+                            {/*<div>
+                                cats.map(cat => (
                                     <Image
-                                        src={'https:' + cat.toys[0].fields.image[0].fields.file.url}
+                                        src={'https:' + cat.types[0].fields.image.fields.file.url}
                                         height={cat.toys[0].fields.image[0].fields.file.details.image.height}
                                         width={cat.toys[0].fields.image[0].fields.file.details.image.width}
                                     />
-                                ))*/}
-
-                            </div>
+                                ))
+                            </div>*/}
                             <div className={styles.row}>
                                 <label className={styles.toys} htmlFor="bal">
                                     <input className={styles.invisable} type="radio" name="toys" id="bal" value="bal" />
@@ -216,12 +212,10 @@ export default function Form({ cats, onSubmit }) {
                         </div>
                     </div>
                     <div >
-                        <Link href={`/createMessage/${nanoid()}`}>
-                            <a> <input className={styles.button} type="submit" value="Send" onClick={updateDataValue} /></a>
+                        <Link href={`/createMessage/${newData.to}`}>
+                            <a> <input className={styles.button} type="submit" value="Send" onClick={updateDataValue} />wee</a>
                         </Link>
                     </div>
-
-                    {/*<Link href={`/createMessage/?to=${to}&from=${from}`}> Wee </Link>*/}
                 </div>
             </form>
             <div className={styles.cat}>
@@ -231,13 +225,25 @@ export default function Form({ cats, onSubmit }) {
     )
 }
 
+function ColorCustomizer({ onChangeColor, color }) {
+    return (
+        <div>
+            <ClayColorPicker
+                onValueChange={onChangeColor}
+                value={color}
+            />
+        </div>
+    );
+}
+
+/*
 export async function getStaticProps() {
 
     const client = createClient({
         space: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_KEY,
     })
-
+    // types, toys
     const res = await client.getEntries({ content_type: "cat" })
     return {
         props: {
@@ -245,4 +251,4 @@ export async function getStaticProps() {
         },
         revalidate: 1
     }
-}
+}*/
