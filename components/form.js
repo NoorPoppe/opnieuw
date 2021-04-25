@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import Link from 'next/link'
-//import { Listbox, ListboxOption } from '@reach/listbox'
-//import '@reach/listbox/styles.css'
-import styles from '../styles/Form.module.css'
+import Image from 'next/image';
+import { createClient } from "contentful-management";
 import React from 'react';
+
 import Cat, { PARTS } from './cat';
 import '@clayui/css/lib/css/atlas.css';
 import { ClaySelect } from '@clayui/form';
 import ClayColorPicker from '@clayui/color-picker';
 import { nanoid } from 'nanoid';
-
-//import ClayLoadingIndicator from '@clayui/loading-indicator';
-import Image from 'next/image';
+import { uuid, v4 } from "uuidv4";
+//css
+import styles from '../styles/Form.module.css'
 
 function ColorCustomizer({ onChangeColor, color }) {
     return (
@@ -27,21 +27,49 @@ function ColorCustomizer({ onChangeColor, color }) {
 
 export default function Form({ cats, onSubmit }) {
     //const { to, from, lie, types, toys } = cats.fields
-    const handleSubmit = (e) => {
+    const [newData, setNewData] = useState({
+        to: "",
+        from: "",
+        lie: "",
+    });
+    // const data = getValue().list;
+    const updateDataValue = async (e) => {
         e.preventDefault();
-        const data = {
-            to: e.target.to.value,
-            from: e.target.from.value,
-            lie: e.target.lie.value,
-        };
-        e.target.reset();
-        onSubmit(data);
+        console.log(process.env.CONTENTFUL_ACCES_KEY)
+        const client = createClient({
+            space: process.env.CONTENTFUL_SPACE_ID,
+            accessToken: process.env.CONTENTFUL_ACCES_KEY,
+        })
+        // Create entry
+        client
+            .getSpace("7h21otlgi1p3")
+            .then((space) => space.getEnvironment("master"))
+            .then((environment) =>
+                environment.createEntryWithId("cat", v4(), {
+                    fields: {
+                        to: {
+                            "en-US": newData.to,
+                        },
+                        from: {
+                            "en-US": newData.from,
+                        },
+                        lie: {
+                            "en-US": newData.lie,
+                        },
+                    },
+                })
+            )
+            .then((entry) => {
+                // tis gelukt
+            })
+            .catch((err) => {
+                //niet gelukt
+            });
     };
-
     //const { types } = cats.fields
-    let [to, setTo] = useState('')
-    let [lie, setLie] = useState('')
-    let [from, setFrom] = useState('')
+    //let [to, setTo] = useState('')
+    //let [lie, setLie] = useState('')
+    //let [from, setFrom] = useState('')
     const defaultPalettesRef = React.useRef({});
     const defaultPaletteNamesRef = React.useRef([]);
     const [activePalette, setActivePalette] = React.useState(false);
@@ -67,10 +95,7 @@ export default function Form({ cats, onSubmit }) {
 
     return (
         <div className={styles.rood}>
-            <form className={styles.layout}
-                name="cat"
-                method="POST"
-                onSubmit={(e) => handleSubmit(e)} >
+            <form className={styles.layout}>
                 <div>
                     <label className={styles.title}>The studio</label>
                     <div className={styles.margin}>
@@ -162,9 +187,9 @@ export default function Form({ cats, onSubmit }) {
                                     <input className={styles.texbox}
                                         type="text"
                                         name="from"
-                                        value={from}
+                                        value={newData.from}
                                         onChange={(e) => {
-                                            setFrom(e.target.value)
+                                            setNewData({ ...newData, from: e.target.value })
                                         }}
                                     />
                                 </label>
@@ -172,29 +197,31 @@ export default function Form({ cats, onSubmit }) {
                                     <input className={styles.texbox}
                                         type="text"
                                         name="to"
-                                        value={to}
+                                        value={newData.to}
                                         onChange={(e) => {
-                                            setTo(e.target.value)
+                                            setNewData({ ...newData, to: e.target.value })
                                         }}
                                     />
                                 </label>
                                 <label className={styles.subsubtitle} > The lie:
                                     <textarea className={styles.texbox}
+                                        value={newData.lie}
                                         name="lie"
-                                        maxLength="500"></textarea>
+                                        maxLength="500"
+                                        onChange={(e) =>
+                                            setNewData({ ...newData, lie: e.target.value })
+                                        }></textarea>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div >
                         <Link href={`/createMessage/${nanoid()}`}>
-                            <a> <input className={styles.button} type="submit" value="Send" /></a>
+                            <a> <input className={styles.button} type="submit" value="Send" onClick={updateDataValue} /></a>
                         </Link>
                     </div>
 
-                    {/*<Link href={`/createMessage/?to=${to}&from=${from}`}>
-                    Wee
-                </Link>*/}
+                    {/*<Link href={`/createMessage/?to=${to}&from=${from}`}> Wee </Link>*/}
                 </div>
             </form>
             <div className={styles.cat}>

@@ -54,33 +54,29 @@
     display: flex;
 }
 
-.heart {
-    background-color: white;
-    border: none;
-}
-
-.heart:hover {
+/*.hearts__button {
     background-color: red;
-}
+    border: none;
 
-/*
+}*/
+
+
 .hearts {
-  background-color: red;
+  cursor: pointer;
+  background-color: white;
   height: 30px;
   width: 30px;
   transform: rotate(-45deg);
-  transition: background-color 1s;
 }
 
 .hearts::before,
 .hearts::after {
   content: '';
-  background-color: red;
+  background-color: white;
   height: 30px;
   width: 30px;
   border-radius: 50%;
   position: absolute;
-  transition: background-color 1s;
 }
 
 .hearts::before {
@@ -94,5 +90,11 @@
 .hearts:hover,
 .hearts:hover::before,
 .hearts:hover::after {
-  background-color: maroon;
-}*/
+  background-color: red;
+}
+/*werkt nog niet voor button maken */
+.hearts:focus,
+.hearts:focus::before,
+.hearts:focus::after {
+  background-color: red;
+}

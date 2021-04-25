@@ -1,11 +1,9 @@
-/*export default function CreateMessage({ to, from }) {
+export default function CreateMessage() {
     return (
         <div>
             <div>
-                <div>To: {to}</div>
-                <div>From: {from}</div>
+                <p>Gelukt</p>
             </div>
         </div>
     )
 }
-*/

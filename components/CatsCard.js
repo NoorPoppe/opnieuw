@@ -7,7 +7,7 @@ import React, { useState } from "react";
 export default function CatCard({ cat }) {
     const [value, functieOmValueAanTePassen] = useState(0);
     const { from, lie, slug, toys, types } = cat.fields
-    //const [like, seLike] = useState(0);
+    const [like, seLike] = useState(0);
     console.log(cat)
     return (
       
@@ -33,10 +33,9 @@ export default function CatCard({ cat }) {
                     height="330px"
                 />}
             </div>*/}
-            <button className={styles.heart} /*disabled={like >= 1}*/ onClick={() => functieOmValueAanTePassen(value + 1)}> ❤ </button>
+            <div className={styles.hearts}> <button className={styles.hearts__button}  disabled={like >= 1} onClick={() => functieOmValueAanTePassen(value + 1)}>  </button> </div>
             <Link href={'/gallery/' + slug}>
                 <div>
-                    {<div className={styles.hearts}></div>}
                     <p className={styles.lie}>{value} likes</p>
                     <p className={styles.lie}>{lie}</p>
                     

@@ -2,7 +2,7 @@ import { fetchEntries } from '../../utils/contentfulCats'
 import ReactDOM from 'react-dom';
 import Form from '../../components/form';
 import { createClient } from "contentful-management";
-import Forms from '../../components/Forms';
+//import Forms from '../../components/Forms';
 
 function createMessage() {
 
@@ -10,7 +10,7 @@ function createMessage() {
         <>
             <div>
                 <Form />
-                {<Forms />}
+                {/*<Forms />*/}
             </div>
         </>
     );
