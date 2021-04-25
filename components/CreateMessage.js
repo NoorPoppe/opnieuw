@@ -1,4 +1,4 @@
-export default function createMessage({ to, from }) {
+/*export default function CreateMessage({ to, from }) {
     return (
         <div>
             <div>
@@ -8,3 +8,4 @@ export default function createMessage({ to, from }) {
         </div>
     )
 }
+*/

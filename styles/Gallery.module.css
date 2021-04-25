@@ -19,6 +19,10 @@
     padding: 1rem;
     margin: 1rem auto;
     cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.item:hover {
+    transform: scale(1.1); 
 }
 
 .from {
@@ -51,6 +55,44 @@
 }
 
 .heart {
-    background-color: red;
+    background-color: white;
     border: none;
 }
+
+.heart:hover {
+    background-color: red;
+}
+
+/*
+.hearts {
+  background-color: red;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-45deg);
+  transition: background-color 1s;
+}
+
+.hearts::before,
+.hearts::after {
+  content: '';
+  background-color: red;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  transition: background-color 1s;
+}
+
+.hearts::before {
+  top: -15px;
+}
+
+.hearts::after {
+  left: 15px;
+}
+
+.hearts:hover,
+.hearts:hover::before,
+.hearts:hover::after {
+  background-color: maroon;
+}*/

@@ -1,4 +1,4 @@
-import { createClient } from 'contentful'
+import { createClient } from 'contentful-management'
 //import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
 import { useState } from "react";
@@ -8,7 +8,8 @@ import AddComment from '../../components/comments/AddComment'
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+    accessToken: "_3o5CBmEtJheQrX4Dl7rfQXy08cMxtsf_GvRPXHGyH8",
+    //accessToken: "_3o5CBmEtJheQrX4Dl7rfQXy08cMxtsf_GvRPXHGyH8",
 })
 
 export const getStaticPaths = async () => {
@@ -20,8 +21,7 @@ export const getStaticPaths = async () => {
         return {
             params: { slug: item.fields.slug }
         }
-    })
-
+    }) 
     return {
         paths,
         fallback: true
@@ -55,7 +55,7 @@ const GalleryDetail = ({ cat }) => {
     if (!cat) return <Skeleton />
     const { to, from, lie, types, toys } = cat.fields
     const [comments, setComments] = useState(cat.comments);
-
+/*
     const handleSubmit = async (comment) => {
         comment.gallery = cat.id;
         const response = await fetch(
@@ -74,7 +74,7 @@ const GalleryDetail = ({ cat }) => {
                 setComments(tmp);
             }
     }
-
+*/
 
     return (
             <>

@@ -8,8 +8,10 @@ import Cat, { PARTS } from './cat';
 import '@clayui/css/lib/css/atlas.css';
 import { ClaySelect } from '@clayui/form';
 import ClayColorPicker from '@clayui/color-picker';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+
 //import ClayLoadingIndicator from '@clayui/loading-indicator';
+import Image from 'next/image';
 
 function ColorCustomizer({ onChangeColor, color }) {
     return (
@@ -24,6 +26,7 @@ function ColorCustomizer({ onChangeColor, color }) {
 
 
 export default function Form({ cats, onSubmit }) {
+    //const { to, from, lie, types, toys } = cats.fields
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
@@ -87,6 +90,16 @@ export default function Form({ cats, onSubmit }) {
                         </div>
                         <div className={styles.question__wrapper}>
                             <label className={styles.subsubtitle}>Choose your toy</label>
+                            <div>
+                                {/*cats.map(cat => (
+                                    <Image
+                                        src={'https:' + cat.toys[0].fields.image[0].fields.file.url}
+                                        height={cat.toys[0].fields.image[0].fields.file.details.image.height}
+                                        width={cat.toys[0].fields.image[0].fields.file.details.image.width}
+                                    />
+                                ))*/}
+
+                            </div>
                             <div className={styles.row}>
                                 <label className={styles.toys} htmlFor="bal">
                                     <input className={styles.invisable} type="radio" name="toys" id="bal" value="bal" />

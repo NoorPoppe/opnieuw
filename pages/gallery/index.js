@@ -1,21 +1,20 @@
-import { createClient } from 'contentful'
+import { createClient } from "contentful";
 import CatCard from '../../components/CatsCard'
 import styles from '../../styles/Gallery.module.css'
+import { fetchEntries } from '../../utils/contentfulCats'
 
 export async function getStaticProps() {
 
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+    accessToken: "_3o5CBmEtJheQrX4Dl7rfQXy08cMxtsf_GvRPXHGyH8",
   })
-
+  
   const res = await client.getEntries({ content_type: "cat" })
-  const resc = await client.getEntries({ content_type: "comment" })
 
   return {
     props: {
       cats: res.items,
-      comment: resc.items,
     },
     revalidate: 1
   }

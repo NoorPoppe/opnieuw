@@ -34,9 +34,12 @@
 
 .subsubtitle {
   font-size: 3rem;
-  text-decoration: underline 0.5rem #DF7656;
-  border-radius: 5px;
   font-family:  "Quicksand";
+  background: transparent;
+  border-radius: 10px;
+  height: 10px;
+  width: 400px; /*apart aangeven bij elke sub*/
+  box-shadow: 0 55px 0 0 #DF7656;
 }
 
 .types {
