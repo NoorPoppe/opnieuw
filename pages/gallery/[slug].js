@@ -1,4 +1,4 @@
-import { createClient } from 'contentful-management'
+import { createClient } from 'contentful'
 import { fetchEntries } from '../../utils/contentfulCats'
 
 //import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -8,16 +8,18 @@ import Skeleton from '../../components/Skeleton'
 import Comments from '../../components/comments/Comments'
 import AddComment from '../../components/comments/AddComment'
 
+
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: "_3o5CBmEtJheQrX4Dl7rfQXy08cMxtsf_GvRPXHGyH8",
 })
 
 export const getStaticPaths = async () => {
-    const res = await client.getEntries({ content_type: "cat" })
-    const cornucopia = await res
+    const res = await client.getEntries({
+        content_type: "cat"
+    })
 
-    const paths = r.items.map(item => {
+    const paths = res.items.map(item => {
         return {
             params: { slug: item.fields.slug }
         }
@@ -45,17 +47,16 @@ export const getStaticProps = async ({ params }) => {
     }
 
     return {
-        props: { recipe: items[0] },
+        props: { cat: items[0] },
         revalidate: 1
     }
 }
 
-
 const GalleryDetail = ({ cat }) => {
-    if (!cat) return <Skeleton />
+    //if (!cat) return <Skeleton />
     const { to, from, lie, types, toys } = cat.fields
-    const [comments, setComments] = useState(cat.comments);
-    /*
+    /*   const [comments, setComments] = useState(cat.comments);
+ 
         const handleSubmit = async (comment) => {
             comment.gallery = cat.id;
             const response = await fetch(
@@ -95,8 +96,8 @@ const GalleryDetail = ({ cat }) => {
                     height={toys[0].fields.image[0].fields.file.details.image.height}
                     width={toys[0].fields.image[0].fields.file.details.image.width}
                 />
-                <Comments comments={comments} />
-                <AddComment onSubmit={handleSubmit} />
+                {/*<Comments comments={comments} />
+                <AddComment onSubmit={handleSubmit} />*/}
             </div>
 
         </>

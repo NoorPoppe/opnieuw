@@ -22,8 +22,8 @@ export default function Form({ cats }) {
         to: "",
         from: "",
         lie: "",
-        /* toys: [],
-         types: [],*/
+       /* toys: [],
+        types: [],*/
     });
 
     const updateDataValue = async (e) => {
@@ -218,7 +218,7 @@ export default function Form({ cats }) {
                         </div>
                     </div>
                     <div >
-                        <Link href={`/createMessage/${form.to}`}> {/*nanoid() nog toevoegen*/}
+                        <Link href={`/createMessage/${form.to}`}> {/*nanoid()*/}
                             <a> <input className={styles.button} type="submit" value="send" onClick={updateDataValue} />versturen</a>
                         </Link>
                     </div>

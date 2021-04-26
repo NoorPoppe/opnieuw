@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+//import { nanoid } from 'nanoid';
 
 export default function CreateMessages({ to, from }) {
     const router = useRouter()

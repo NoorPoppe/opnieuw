@@ -1,7 +1,7 @@
 /*const space = process.env.CONTENTFUL_SPACE_ID
 const accessToken = process.env.CONTENTFUL_ACCES_KEY
 
-const client = require('contentful-management').createClient({
+const client = require('contentful').createClient({
   space: space,
   accessToken: accessToken,
 })
