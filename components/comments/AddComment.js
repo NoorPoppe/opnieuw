@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { uuid } from "uuidv4";
 import { createClient } from "contentful-management";
+import Link from 'next/link'
 
 const AddComment = ({ cat }) => {
 
     // newdata geen vaste naam
-    const [newData, setNewData] = useState({
+    const [form, setForm] = useState({
         name: "",
         comment: "",
     });
@@ -25,10 +26,10 @@ const AddComment = ({ cat }) => {
                 environment.createEntryWithId("comment", uuid(), {
                     fields: {
                         comment: {
-                            "en-US": newData.to,
+                            "en-US": form.comment,
                         },
                         name: {
-                            "en-US": newData.from,
+                            "en-US": form.name,
                         },
                     },
                 })
@@ -44,34 +45,31 @@ const AddComment = ({ cat }) => {
         <>
             <h3>add comment</h3>
             <form>
-                <label>
-                    {" "}
-          name:
-          <input
+                <label> name: <input
                         type="text"
                         name="name"
                         required
-                        value={newData.name}
+                        value={form.name}
                         onChange={(e) =>
-                            setNewData({ ...newData, name: e.target.value })
+                            setForm({ ...form, name: e.target.value })
                         }
-                    />{" "}
+                    />
                 </label>
-                <label>
-                    {" "}
-          Commment:
-          <textarea
+                <label> comment:
+                        <textarea 
+                        value={form.comment}
                         name="comment"
-                        required
                         maxLength="500"
-                        value={newData.comment}
                         onChange={(e) =>
-                            setNewData({ ...newData, comment: e.target.value })
-                        }
-                    ></textarea>{" "}
+                            setForm({ ...form, comment: e.target.value })
+                        }></textarea>
                 </label>
-
-                <input type="submit" value="Save" onClick={updateDataValue} />
+                <div >
+                    <Link href={`/succes`}> 
+                        <a> <input  type="submit" value="send" onClick={updateDataValue} />versturen</a>
+                    </Link>
+                </div>
+                <input  type="submit" value="send" onClick={updateDataValue} />
             </form>
         </>
     );

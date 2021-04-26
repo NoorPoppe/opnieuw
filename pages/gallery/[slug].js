@@ -1,6 +1,5 @@
 import { createClient } from 'contentful'
 import { fetchEntries } from '../../utils/contentfulCats'
-
 //import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
 import { useState } from "react";
@@ -53,9 +52,9 @@ export const getStaticProps = async ({ params }) => {
 }
 
 const GalleryDetail = ({ cat }) => {
-    //if (!cat) return <Skeleton />
+    if (!cat) return <Skeleton />
     const { to, from, lie, types, toys } = cat.fields
-    /*   const [comments, setComments] = useState(cat.comments);
+      const [comments, setComments] = useState(cat.comments);
  
         const handleSubmit = async (comment) => {
             comment.gallery = cat.id;
@@ -75,7 +74,7 @@ const GalleryDetail = ({ cat }) => {
                     setComments(tmp);
                 }
         }
-    */
+   
 
     return (
         <>
@@ -96,8 +95,8 @@ const GalleryDetail = ({ cat }) => {
                     height={toys[0].fields.image[0].fields.file.details.image.height}
                     width={toys[0].fields.image[0].fields.file.details.image.width}
                 />
-                {/*<Comments comments={comments} />
-                <AddComment onSubmit={handleSubmit} />*/}
+                <Comments comments={comments} />
+                <AddComment onSubmit={handleSubmit} />
             </div>
 
         </>
