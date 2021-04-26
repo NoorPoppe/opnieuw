@@ -4,7 +4,7 @@ import { fetchEntries } from '../../utils/contentfulCats'
 import Image from 'next/image'
 import { useState } from "react";
 import Skeleton from '../../components/Skeleton'
-import Comments from '../../components/comments/Comments'
+//import Comments from '../../components/comments/Comments'
 import AddComment from '../../components/comments/AddComment'
 
 
@@ -51,31 +51,10 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
-const GalleryDetail = ({ cat }) => {
+const GalleryDetail = ({ cat , cats}) => {
     if (!cat) return <Skeleton />
     const { to, from, lie, types, toys } = cat.fields
-      const [comments, setComments] = useState(cat.comments);
- 
-        const handleSubmit = async (comment) => {
-            comment.gallery = cat.id;
-            const response = await fetch(
-                `${process.env.CONTENTFUL_SPACE_ID}/comments/`,
-                {
-                    method: "POST",
-                    body: JSON.stringify(comment),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-                );    
-                if (response.ok) {
-                    const result = await response.json();
-                    const tmp = [...comments, result];
-                    setComments(tmp);
-                }
-        }
    
-
     return (
         <>
             <div className="banner">
@@ -95,8 +74,10 @@ const GalleryDetail = ({ cat }) => {
                     height={toys[0].fields.image[0].fields.file.details.image.height}
                     width={toys[0].fields.image[0].fields.file.details.image.width}
                 />
-                <Comments comments={comments} />
-                <AddComment onSubmit={handleSubmit} />
+                {/*cats.map(cat => (
+                    <Comments key={cat.sys.id} cat={comment} />
+                ))*/}
+                <AddComment />
             </div>
 
         </>

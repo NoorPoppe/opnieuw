@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { uuid } from "uuidv4";
 import { createClient } from "contentful-management";
-import Link from 'next/link'
 
-const AddComment = ({ cat }) => {
+const AddComment = ({ comment }) => {
 
-    // newdata geen vaste naam
     const [form, setForm] = useState({
         name: "",
         comment: "",
     });
-    // const data = getValue().list;
+ 
     const updateDataValue = async (e) => {
         e.preventDefault();
         console.log(process.env.CONTENTFUL_ACCES_KEY)
@@ -18,7 +16,7 @@ const AddComment = ({ cat }) => {
             space: process.env.CONTENTFUL_SPACE_ID,
             accessToken: process.env.CONTENTFUL_ACCES_KEY,
         })
-        // Create entry
+
         client
             .getSpace("7h21otlgi1p3")
             .then((space) => space.getEnvironment("master"))
@@ -35,10 +33,8 @@ const AddComment = ({ cat }) => {
                 })
             )
             .then((entry) => {
-                // tis gelukt
             })
             .catch((err) => {
-                //niet gelukt
             });
     };
     return (
@@ -50,9 +46,7 @@ const AddComment = ({ cat }) => {
                         name="name"
                         required
                         value={form.name}
-                        onChange={(e) =>
-                            setForm({ ...form, name: e.target.value })
-                        }
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
                     />
                 </label>
                 <label> comment:
@@ -60,9 +54,7 @@ const AddComment = ({ cat }) => {
                         value={form.comment}
                         name="comment"
                         maxLength="500"
-                        onChange={(e) =>
-                            setForm({ ...form, comment: e.target.value })
-                        }></textarea>
+                        onChange={(e) => setForm({ ...form, comment: e.target.value })}></textarea>
                 </label>
                 <input  type="submit" value="send" onClick={updateDataValue} />
             </form>

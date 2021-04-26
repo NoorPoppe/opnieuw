@@ -15,9 +15,9 @@ import { Listbox, ListboxOption } from '@reach/listbox'
 //css
 import styles from '../styles/Form.module.css'
 import Types from './Types';
+//import Toys from './Toys';
 
-export default function Form({ cats }) {
-    //const { toys } = cats.fields
+export default function Form({ cats , types }) {
     const [form, setForm] = useState({
         to: "",
         from: "",
@@ -94,11 +94,11 @@ export default function Form({ cats }) {
                     <div className={styles.margin}>
                         <div className={styles.question__wrapper} >
                             <label className={styles.subsubtitle} >Choose your cat</label>
-                            {/*<Listbox value={data} onChange={setData}>
-                                {cats.map((cat) => {
-                                    return <ListboxOption></ListboxOption>
-                                })
-                            </Listbox>*/}
+                            <div>
+                            {/*types.map(type => (
+                                <Types key={types.sys.id} types={type} />
+                            ))*/}
+                            </div>
                             {<div className={styles.row}>
                                 <label className={styles.types} htmlFor="normal">Normal cat
                                 <input className={styles.invisable} type="radio" name="types" id="normal" value="normal" />
@@ -218,7 +218,7 @@ export default function Form({ cats }) {
                         </div>
                     </div>
                     <div >
-                        <Link href={`/createMessage/${form.to}`}> {/*nanoid()*/}
+                        <Link href={`/createMessage/${form.to}`}>
                             <a> <input className={styles.button} type="submit" value="send" onClick={updateDataValue} />versturen</a>
                         </Link>
                     </div>
