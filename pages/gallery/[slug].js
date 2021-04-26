@@ -1,8 +1,8 @@
 import { createClient } from 'contentful'
-import { fetchEntries } from '../../utils/contentfulCats'
+//import { fetchEntries } from '../../utils/contentfulCats'
 //import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
-import { useState } from "react";
+//import { useState } from "react";
 import Skeleton from '../../components/Skeleton'
 //import Comments from '../../components/comments/Comments'
 import AddComment from '../../components/comments/AddComment'
@@ -58,22 +58,22 @@ const GalleryDetail = ({ cat , cats}) => {
     return (
         <>
             <div className="banner">
-                <Image
-                    src={'https:' + types[0].fields.image.fields.file.url}
-                    width={types[0].fields.image.fields.file.details.image.width}
-                    height={types[0].fields.image.fields.file.details.image.height}
-                />
+                {/*<Image
+                    src={'https:' + types[0].fields.image[0].fields.file.url}
+                    width={types[0].fields.image[0].fields.file.details.image.width}
+                    height={types[0].fields.image[0].fields.file.details.image.height}
+                />*/}
             </div>
 
             <div >
                 <p>{lie}</p>
                 <p>{to}</p>
                 <p>{from}</p>
-                <Image
+                {/*<Image
                     src={'https:' + toys[0].fields.image[0].fields.file.url}
                     height={toys[0].fields.image[0].fields.file.details.image.height}
                     width={toys[0].fields.image[0].fields.file.details.image.width}
-                />
+                />*/}
                 {/*cats.map(cat => (
                     <Comments key={cat.sys.id} cat={comment} />
                 ))*/}
