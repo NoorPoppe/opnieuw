@@ -64,11 +64,6 @@ const AddComment = ({ cat }) => {
                             setForm({ ...form, comment: e.target.value })
                         }></textarea>
                 </label>
-                <div >
-                    <Link href={`/succes`}> 
-                        <a> <input  type="submit" value="send" onClick={updateDataValue} />versturen</a>
-                    </Link>
-                </div>
                 <input  type="submit" value="send" onClick={updateDataValue} />
             </form>
         </>
