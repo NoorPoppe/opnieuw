@@ -17,13 +17,13 @@ import styles from '../styles/Form.module.css'
 import Types from './Types';
 
 export default function Form({ cats }) {
-    //const { toys, types } = cats.fields
-    const [newData, setNewData] = useState({
+    //const { toys } = cats.fields
+    const [form, setForm] = useState({
         to: "",
         from: "",
         lie: "",
-       /* toys: [],
-        types: [],*/
+        /* toys: [],
+         types: [],*/
     });
 
     const updateDataValue = async (e) => {
@@ -41,13 +41,13 @@ export default function Form({ cats }) {
                 environment.createEntryWithId("cat", uuid(), {
                     fields: {
                         to: {
-                            "en-US": newData.to,
+                            "en-US": form.to,
                         },
                         from: {
-                            "en-US": newData.from,
+                            "en-US": form.from,
                         },
                         lie: {
-                            "en-US": newData.lie,
+                            "en-US": form.lie,
                         },
                     },
                 })
@@ -66,8 +66,9 @@ export default function Form({ cats }) {
     const [palette, setPalette] = React.useState({});
     const [loading, setLoading] = React.useState(true);
 
+
     /*let [selectedSlug, setSelectedSlug] = useState([])*/
-    const [data, setData] = useState('upgrade');
+    //const [data, setData] = useState('upgrade');
 
     React.useEffect(() => {
         fetch(`/data/presets.json`)
@@ -89,7 +90,7 @@ export default function Form({ cats }) {
         <div className={styles.rood}>
             <form className={styles.layout}>
                 <div>
-                    <label className={styles.title}>The studio</label>
+                    <h1 className={styles.title}>The studio</h1>
                     <div className={styles.margin}>
                         <div className={styles.question__wrapper} >
                             <label className={styles.subsubtitle} >Choose your cat</label>
@@ -112,6 +113,11 @@ export default function Form({ cats }) {
                         </div>
                         <div className={styles.question__wrapper}>
                             <label className={styles.subsubtitle}>Choose your toy</label>
+                            {/*<Image
+                                src={'https:' + toys[0].fields.image[0].fields.file.url}
+                                height={toys[0].fields.image[0].fields.file.details.image.height}
+                                width={toys[0].fields.image[0].fields.file.details.image.width}
+                            />*/}
                             {/*<div>
                                 cats.map(cat => (
                                     <Image
@@ -177,15 +183,15 @@ export default function Form({ cats }) {
                         </div>
                         <div className={styles.lie_wrapper}>
 
-                            <label className={styles.subtitle}>The lie</label>
+                            <h2 className={styles.subtitle}>The lie</h2>
                             <div className={styles.lie_wrapper__padding}>
                                 <label className={styles.subsubtitle}>From:
                                     <input className={styles.texbox}
                                         type="text"
                                         name="from"
-                                        value={newData.from}
+                                        value={form.from}
                                         onChange={(e) => {
-                                            setNewData({ ...newData, from: e.target.value })
+                                            setForm({ ...form, from: e.target.value })
                                         }}
                                     />
                                 </label>
@@ -193,27 +199,27 @@ export default function Form({ cats }) {
                                     <input className={styles.texbox}
                                         type="text"
                                         name="to"
-                                        value={newData.to}
+                                        value={form.to}
                                         onChange={(e) => {
-                                            setNewData({ ...newData, to: e.target.value })
+                                            setForm({ ...form, to: e.target.value })
                                         }}
                                     />
                                 </label>
                                 <label className={styles.subsubtitle} > The lie:
                                     <textarea className={styles.texbox}
-                                        value={newData.lie}
+                                        value={form.lie}
                                         name="lie"
                                         maxLength="500"
                                         onChange={(e) =>
-                                            setNewData({ ...newData, lie: e.target.value })
+                                            setForm({ ...form, lie: e.target.value })
                                         }></textarea>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div >
-                        <Link href={`/createMessage/${newData.to}`}>
-                            <a> <input className={styles.button} type="submit" value="Send" onClick={updateDataValue} />wee</a>
+                        <Link href={`/createMessage/${form.to}`}> {/*nanoid() nog toevoegen*/}
+                            <a> <input className={styles.button} type="submit" value="send" onClick={updateDataValue} />versturen</a>
                         </Link>
                     </div>
                 </div>

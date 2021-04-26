@@ -3,14 +3,14 @@ import React from 'react';
 export const PARTS = [
 	{label: 'Eye', part: 'eye'},
 	{label: 'Paw', part: 'paw'},
-	{label: 'Lichaam', part: 'lichaam'},
+	{label: 'body', part: 'body'},
 	{label: 'Ear', part: 'ear'}
 ];
 
 export default function CatFuck({
 	eyeColor /*baseColor => eyeColor */,
 	pawColor /*cushionColor*/,
-	lichaamColor /*legColor*/,
+	bodyColor /*legColor*/,
 	earColor  /*pillowColor*/,
 	...otherProps
 }) {
@@ -34,7 +34,7 @@ export default function CatFuck({
 					strokeMiterlimit="10" />
 				<path d="M239 174L170.764 695.125H674.351L638.311 235.37L647.077 43.4812L572.5 161H321L247 2L239 174Z"
 					/*Lichaam*/ 
-					fill={`#${lichaamColor}`}
+					fill={`#${bodyColor}`}
 					stroke="black"
 					strokeWidth="6" />
 				<path d="M355.683 359.294L355.683 359.294L355.672 359.3C354.709 359.83 353.464 359.651 352.656 358.845C349.975 356.115 345.711 351.488 342.86 347.117C341.417 344.905 340.455 342.937 340.145 341.414C339.993 340.67 340.023 340.155 340.125 339.816C340.212 339.524 340.375 339.273 340.726 339.04C341.744 338.39 343.527 337.967 346.053 337.882C348.52 337.799 351.418 338.043 354.424 338.478C360.429 339.347 366.619 340.939 370.167 341.948C371.615 342.364 372.402 343.889 371.932 345.209L371.932 345.209L371.927 345.221C370.936 348.06 367.316 352.984 355.683 359.294Z"

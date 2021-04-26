@@ -10,7 +10,6 @@ function createMessage({ cats , toys }) {
         <>
             <div>
                 <Form cats={toys} />
-                {/*<Forms />*/}
             </div>
         </>
     );

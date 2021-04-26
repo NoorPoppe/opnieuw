@@ -21,6 +21,7 @@ export async function getStaticProps() {
 }
 
 const Gallery = ({cats}) => {
+  
     console.log(cats)
     return (
         <>
